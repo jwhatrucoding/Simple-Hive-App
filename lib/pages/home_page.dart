@@ -13,13 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage>{
-  // variable
   //reference our box
   final _myBox = Hive.box('mybox');
   final TextEditingController textControllerValue = TextEditingController();
   final TextEditingController textControllerIndex = TextEditingController();
 
-  //methods
+  // methods
   // write data
   void writeData() {
     _myBox.put(textControllerIndex.text, textControllerValue.text);
@@ -30,6 +29,7 @@ class _HomePageState extends State<HomePage>{
   void readData() {
     print("In this version, you are able to see the content displayed in the ListView! :)");
   }
+
   // delete data
   void deleteData() {
     _myBox.clear();
@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage>{
       ),
     );
   }
+
   //UI
   @override
   Widget build(BuildContext context){
@@ -86,7 +87,9 @@ class _HomePageState extends State<HomePage>{
                 border: OutlineInputBorder(),
               ),
             ),
+
             SizedBox(height: 16,),
+            
             TextField(
               controller: textControllerIndex,
               decoration: InputDecoration(
@@ -99,16 +102,21 @@ class _HomePageState extends State<HomePage>{
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                // Write button
                 MaterialButton(
                   onPressed: writeData,
                   child: Text('Write'),
                   color: Colors.blue,
                 ),
+
+                // Read button
                 MaterialButton(
                   onPressed: readData,
                   child: Text('Read'),
                   color: Colors.blue,
                 ),
+
+                // Delete button
                 MaterialButton(
                   onPressed: deleteData,
                   child: Text('Delete'),
